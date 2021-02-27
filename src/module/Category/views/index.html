@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin page</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <section class="main-page">
+      <h3><a href="./../../../../index.html">Admin page</a></h3>
+      <nav>
+        <ul>
+          <li><a href="./../../Book/views/">Book</a></li>
+          <li><a href="./../../UserPage/views/">User</a></li>
+          <li><a href="./../../Category/views/">Category</a></li>
+        </ul>
+      </nav>
+    </section>
+
+    <section class="book-content">
+      <!-- render js -->
+      <table>
+        <thead>
+          <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Action</td>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div class="book-content__form-input">
+        <form>
+          <label for="nameCategory">Name</label>
+          <input
+            type="text"
+            id="nameCategory"
+            name="nameCategory"
+            placeholder="Name Category"
+          />
+          <small id="nameCategory-alert"></small>
+          <button id="btn-add" type="button">Add Category</button>
+          <button id="btn-edit" type="button">Confirm Edit Category</button>
+        </form>
+      </div>
+    </section>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+      integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+      crossorigin="anonymous"
+    ></script>
+    <script src="./../modules/index.js" type="module"></script>
+  </body>
+</html>

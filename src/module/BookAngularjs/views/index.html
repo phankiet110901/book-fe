@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin page</title>
+  <link rel="stylesheet" href="./index.css" />
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+  <section class="main-page">
+    <h3><a href="/index.html">Admin page</a></h3>
+    <nav>
+      <ul>
+        <li><a href="#">Book</a></li>
+        <li><a href="./../../UserPage/views/">User</a></li>
+        <li><a href="./../../Category/views/">Category</a></li>
+      </ul>
+    </nav>
+  </section>
+  <section class="book-content">
+    <!-- render js -->
+    <table>
+      <thead>
+        <tr>
+          <td>Name book</td>
+          <td>Price book</td>
+          <td>Author</td>
+          <td>Image</td>
+          <td>Category</td>
+          <td>Rating</td>
+          <td>Review</td>
+          <td>Action</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="book in allBook">
+          <td>{{book.name_book}}</td>
+          <td>{{book.price_book | vnCurrency }}</td>
+          <td>{{book.author}}</td>
+          <td><img ng-src="{{book.img_book}}" alt="" width="150" height="150"></td>
+          <td>{{book.name_category}}</td>
+          <td>{{book.rating | validateRating}}</td>
+          <td>{{book.review}}</td>
+          <td>
+            <button id="btn-add">Edit</button>
+            <button id="btn-delete">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="book-content__form-input">
+      <form>
+        <label for="nameBook">Name</label>
+        <input type="text" id="nameBook" ng-change="handleOnChange()" ng-model="dataInput.nameBook"
+          placeholder="Name Category" />
+        <small id="nameBook-alert"></small>
+        <label for="price">Price</label>
+        <input type="number" id="price" name="price" placeholder="price" />
+        <small id="price-alert"></small>
+        <label for="author">Author</label>
+        <input type="type" id="author" name="author" placeholder="Author" />
+        <small id="author-alert"></small>
+        <label for="image">Image</label>
+        <input type="file" id="image" name="image" file-model="dataInput.img" />
+        <small id="author-alert"></small>
+        <label for="category">Category</label>
+        <select name="category" id="category" style="padding: 12px" ng-model="dataInput.categoryID"
+          ng-changle="handleOnChange()">
+          <option value="">Select</option>
+          <option ng-repeat="category in allCate" value="{{category.id_category}}">{{category.name_category}}</option>
+        </select>
+        <small id="price-alert"></small>
+        <label for="review">Review</label>
+        <textarea name="review" id="review" cols="30" rows="10" ng-model="dataInput.review"></textarea>
+        <small id="review-alert"></small>
+        <button id="btn-add" type="button" ng-click="handleAddBook()">Add Book</button>
+        <button id="btn-edit" type="button">Confirm Edit Book</button>
+      </form>
+    </div>
+  </section>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+    integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+    crossorigin="anonymous"></script>
+  <script src="./../modules/index.js" type="module"></script>
+</body>
+
+</html>
